@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { GameUI, GameUII } from "./GameUI"
-import { Game } from "./Game"
+import { GameUI } from "./GameUI" //JSX -> TS cant read defaults
+import { Game } from "./Game" //JSX -> TS cant read defaults
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
