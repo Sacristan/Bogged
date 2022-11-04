@@ -14,22 +14,30 @@ export class GameUI extends React.Component {
         return < div className="enemiesKilled" > {this.props.enemiesKilled.toFixed()}</div >
     }
 
+    renderGameOver() {
+        return (
+            <div className="deathPanel">
+                <div className="deathText">You died</div>
+                {this.renderScore()}
+            </div>
+        );
+    }
+
+    renderGameUI() {
+        return (
+            <div>
+                < div className="scoreText" > {this.props.survivalTime.toFixed()}</div >
+                {this.renderScore()}
+            </div>
+        );
+    }
+
     renderUI() {
         if (Game.instance?.gameOver) {
-            return (
-                <div className="deathPanel">
-                    <div className="deathText">You died</div>
-                    {this.renderScore()}
-                </div>
-            );
+            return this.renderGameOver();
         }
         else {
-            return (
-                <div>
-                    < div className="scoreText" > {this.props.survivalTime.toFixed()}</div >
-                    {this.renderScore()}
-                </div>
-            );
+            return this.renderGameUI();
         }
     }
 

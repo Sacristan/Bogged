@@ -97,21 +97,21 @@ export default class SceneBabylon {
 
     createDebugTool(): void {
         // DEBUGING CONF
-        // if (process.env.NODE_ENV === 'development') {
-        //     require('@babylonjs/core/Debug/debugLayer');
-        //     require('@babylonjs/inspector');
+        if (process.env.NODE_ENV === 'development') {
+            require('@babylonjs/core/Debug/debugLayer');
+            require('@babylonjs/inspector');
 
-        //     // hide/show the Inspector
-        //     window.addEventListener('keydown', (ev) => {
-        //         // Alt+I
-        //         if (ev.altKey && ev.keyCode === 73) {
-        //             if (this.scene.debugLayer.isVisible()) {
-        //                 this.scene.debugLayer.hide();
-        //             } else {
-        //                 this.scene.debugLayer.show();
-        //             }
-        //         }
-        //     });
-        // }
+            // hide/show the Inspector
+            window.addEventListener('keydown', (ev) => {
+                // Alt+I
+                if (ev.altKey && ev.keyCode === 73) {
+                    if (this.scene.debugLayer.isVisible()) {
+                        this.scene.debugLayer.hide();
+                    } else {
+                        this.scene.debugLayer.show();
+                    }
+                }
+            });
+        }
     }
 }

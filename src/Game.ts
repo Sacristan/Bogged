@@ -5,7 +5,6 @@ import { Enemy } from "./Enemy";
 import { SceneObject } from "./SceneObject";
 import { Tank } from "./Tank";
 import _ from "lodash";
-import GameUI from "./GameUI"
 
 function waitFor(conditionFunction): Promise<any> {
     const poll = resolve => {
@@ -83,7 +82,6 @@ export class Game {
 
         this.createEnvironment();
         this.createPlayer();
-        // this.createEnemies();
 
         Game._instance = this;
         this.spawnEnemiesRoutine();
@@ -118,7 +116,7 @@ export class Game {
     triggerGameOver() {
         console.log("GameOver: Player DEAD");
         this.gameOver = true;
-        // this.camera.detachControl();
+        this.camera.detachControl();
     }
 
     increaseScore() {
@@ -156,10 +154,11 @@ export class Game {
                 enemy.mesh = enemy.findMesh("enemyMesh");
                 enemy.root = enemy.mesh.parent as TransformNode;
 
-                // const parent = enemy.root.parent;
-                // enemy.root.parent = null;
+                const parent = enemy.root.parent;
+                enemy.root.parent = null;
 
-                // parent.dispose();
+                parent.dispose();
+
                 enemy.root.name = `enemy-${Game.unixTimestamp()}`;
                 this.enemies.push(enemy);
                 enemy.root.position = this.randomPos();

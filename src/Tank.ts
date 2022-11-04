@@ -53,7 +53,6 @@ export class Tank extends SceneObject {
         this.bulletMat.roughness = 1;
 
         window.addEventListener("keydown", (evt) => {
-            // Press space key to fire  
             if (evt.keyCode === 32 && (Game.Time - this.lastShotTime) > Tank.shotDelay) {//space
                 this.fireBullet();
             }

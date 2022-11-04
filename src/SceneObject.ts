@@ -44,9 +44,6 @@ export class SceneObject {
         return null;
     }
 
-    clone() {
-    }
-
     dispose() {
         // for(let i=0; i < this.meshes.length; i++){
         //     this.meshes[i]?.dispose();

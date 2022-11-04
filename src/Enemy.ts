@@ -27,26 +27,11 @@ export class Enemy extends SceneObject {
     init(): void {
         this.collider = MeshBuilder.CreateBox(this.root.id + "_col", { size: 2 }, Game.instance.scene);
         this.impostor = this.collider.physicsImpostor = new PhysicsImpostor(this.collider, PhysicsImpostor.SphereImpostor, { mass: 0, restitution: 0.9 }, Game.instance.scene);
-        // this.root.addChild(this.collider);
 
         this.collider.parent = this.root;
         this.collider.isVisible = false;
         this.moveRoutine();
     }
-
-
-    // constructor(root: TransformNode, meshName: string) {
-    //     this.root = root;
-    //     this.mesh = this.findMesh(meshName)
-
-    //     this.collider = MeshBuilder.CreateBox(this.root.id + "_col", { size: 2 }, Game.instance.scene);
-    //     this.impostor = this.collider.physicsImpostor = new PhysicsImpostor(this.collider, PhysicsImpostor.SphereImpostor, { mass: 0, restitution: 0.9 }, Game.instance.scene);
-    //     // this.root.addChild(this.collider);
-
-    //     this.collider.parent = this.root;
-    //     this.collider.isVisible = false;
-    //     this.moveRoutine();
-    // }
 
     moveRoutine = async () => {
         await Game.waitUntilReady();
@@ -81,21 +66,6 @@ export class Enemy extends SceneObject {
             const delta: Vector3 = multiplyVectorWithScalar(dir, Game.deltaTime * speed);
             this.root.position.addInPlace(delta)
             this.root.lookAt(dir);
-
-            // this.mesh.rotate(Vector3.Right(), Math.PI);
-
-            // this.mesh.rotate(Vector3.Left(), 20000, Space.WORLD);
-            // this.root.rotation = Quaternion.FromLookDirectionLH(dir, Vector3.Up()).toEulerAngles();
         }
     }
-
-    // private findMesh(name: string): AbstractMesh {
-    //     var meshes = this.root.getChildMeshes(true);
-
-    //     for (let i = 0; i < meshes.length; i++) {
-    //         if (meshes[i]?.name.includes(name)) return meshes[i];
-    //     }
-
-    //     return null;
-    // }
 }
